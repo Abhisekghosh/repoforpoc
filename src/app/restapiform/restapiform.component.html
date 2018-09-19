@@ -1,20 +1,40 @@
-<div>
+
+<p #alerts>
+  <ngb-alert>
+    {{message}}
+  </ngb-alert>
+</p>
+<div> 
+  <div>
+      <a routerLink="/product">Add Product</a>
+  </div> 
 <h1>CRUD form</h1>
 <form [formGroup]="userForm">
+  <div>
     <label> Username : </label>
     <input type="text" placeholder="Enter Username" formControlName="username">      
     <label>Salary:</label>
     <input type="number" placeholder="Enter Salary" formControlName="salary">
-  <button class="btn" [disabled]="!userForm.valid" (click)="add()">Add</button>
+    <label>Date Of Birth:</label>
+    <input type="text"  placeholder="yyyy-mm-dd" formControlName="dob" ngbDatepicker  #d="ngbDatepicker" [minDate]="{year: 1970, month: 1, day: 1}"> 
+    <button  (click)="d.toggle()" type="button"></button>
+  </div>
   <div>
-    <h3>List Of Users</h3>
+    <button class="btn" [disabled]="!userForm.valid" (click)="add()">Add</button>
+    <button class="btn" (click)="userForm.reset()">Cancel</button>
+  </div>
+   
+  <div>
+    <h3>List Of Users</h3>  
     <div class="grid grid-pad">
+        
         <table width="100%" cellspacing="0" cellpadding="0" id="datatable">
             <thead>
               <tr>
                 <th width="19%" align="center" valign="middle">ID</th>
                 <th width="19%" align="center" valign="middle">Username</th>
                 <th width="19%" valign="middle" align="center">Salary</th>
+                <th width="19%" valign="middle" align="center">Age</th>
                 <th width="29%" valign="middle" align="center">Edit User</th>
                 <th width="29%" valign="middle" align="center">Delete User</th>
                 </tr>
@@ -24,6 +44,7 @@
                  <td align="center"  valign="middle">{{users.id}}</td>
                  <td align="center"  valign="middle">{{users.username}}</td>
                  <td align="center"  valign="middle">{{users.salary}}</td>
+                 <td align="center"  valign="middle">{{users.age}}</td>
                  <td align="center"  valign="middle"><button class="btn" [disabled]="!userForm.valid" (click)="update(users.id)">Edit</button></td>
                  <td align="center"  valign="middle"><button class="btn"  (click)="delete(users.id)">Delete</button></td>
                  
@@ -33,9 +54,6 @@
           
         </div>
     </div> 
-    <div>
-        <p>{{message}}</p>
-</div>  
 </form>
 
 </div>

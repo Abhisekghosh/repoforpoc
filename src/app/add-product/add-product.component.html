@@ -1,0 +1,105 @@
+
+<mat-card class="form-card">
+  <mat-card-header class="form-header">
+    
+    <mat-card-title>Product</mat-card-title>
+    <mat-card-subtitle>Form for Adding New product</mat-card-subtitle>
+  </mat-card-header>
+      <div class="addProductForm">
+          <form class="addProductForm" [formGroup]="productForm">
+            <div class="text-elements">
+              <div class="div-name">
+                <label>Name: </label>
+                <mat-form-field>
+                    <input matInput maxlength="5"  placeholder="Enter the name" class="name" formControlName="name">
+                  </mat-form-field>
+                </div>
+                <div class = "div-desc">
+                  <label>Description: </label>
+                  <mat-form-field>
+                    <textarea matInput maxlength="500"  placeholder="Enter a description" class="description" name="description" formControlName="description"></textarea>
+                  </mat-form-field>
+                </div>
+                </div>
+                <div class="middle-elements">
+                   
+                    <label>From Date: </label>
+                  <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="fromDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                  </mat-form-field>
+                  
+                  
+                  <label>To Date: </label>
+                  <mat-form-field>
+                      <input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="toDate">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                    
+                  </div>
+
+                  <div class="lower-elements">
+                      <label>Category: </label>
+                    <mat-radio-group formControlName="category">
+                        <mat-radio-button  value="Data">Data</mat-radio-button>
+                        <mat-radio-button value="Voice">Voice</mat-radio-button>
+                        <mat-radio-button value="SMS">SMS</mat-radio-button>
+                        <mat-radio-button value="Combo">Combo</mat-radio-button>
+                    </mat-radio-group>
+                    <label>Status: </label>
+                    <mat-radio-group formControlName="status">
+                      
+                      <mat-radio-button  value="Active">Active</mat-radio-button>
+                      <mat-radio-button value="Inactive">Inactive</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  
+                 
+              
+            
+            
+            <div class="btn-class" >
+              <mat-card-actions>
+                  <button mat-button [disabled]="!productForm.valid" (click)="save()"><i class="material-icons" style="font-size:36px">save</i>SAVE</button>
+                  <button mat-button (click)="productForm.reset()"><i class="material-icons" style="font-size:36px">cancel</i>CANCEL</button>
+                </mat-card-actions>
+            </div>
+          </form>
+        
+          
+        </div>
+</mat-card>
+<div class="activecomponent-card"> 
+    <mat-card *ngFor="let item of dataSource" class="activecomponent">
+      <mat-card-header>
+        <mat-card-title>Available Components</mat-card-title>
+        <mat-card-subtitle>Select the component with ID- {{item.id}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+      <h1><mat-card-actions> <button mat-button (click)="getActiveComponents({ id: item.id, itemname: item.itemname,itemprice:item.itemprice})"><i class="material-icons" style="font-size:36px">add</i></button></mat-card-actions>
+    </h1>
+      <h1>{{item.itemname}}</h1>
+      <h1>{{item.itemprice}}</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="yourcomponent-card">
+      <mat-card  *ngFor="let items of dataSource1" class="addComponent">
+        <mat-card-header>
+          <mat-card-title>Selected Components</mat-card-title>
+          <mat-card-subtitle>You have added the component with ID- {{items.id}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+        <h1><mat-card-actions> <button mat-button (click)="getYourComponents({ id: items.id, itemname: items.itemname,itemprice:items.itemprice})"><i class="material-icons" style="font-size:36px">remove</i></button></mat-card-actions>
+          </h1>
+        <h1>{{items.itemname}}</h1>
+        <h1>{{items.itemprice}}</h1>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+
