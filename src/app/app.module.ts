@@ -12,7 +12,7 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {MatInputModule,MatNativeDateModule } from '@angular/material';
+import {MatInputModule,MatNativeDateModule,MatSelectModule } from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
@@ -30,7 +30,7 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    [MatButtonModule, MatCheckboxModule],
+    [MatButtonModule, MatCheckboxModule,MatSelectModule],
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -38,6 +38,7 @@ import {MatTableModule} from '@angular/material/table';
     MatNativeDateModule ,
     MatRadioModule,
     MatTableModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -114,7 +114,30 @@ width: 49%;
 bottom: 10px; left: 10px;
 float:left;
 }
+.div-category {
+  width: 49%;
+  bottom: 10px; left: 10px;
+  float:left;
+}
+.div-status {
+width: 49%;
+bottom: 10px; left: 10px;
+float:right;
+}
+
 .btn-class{
 margin-left:10px;
 
+}
+.example-margin {
+  margin: 0 10px;
+}
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+.category {
+  display: inline-block;
 }
